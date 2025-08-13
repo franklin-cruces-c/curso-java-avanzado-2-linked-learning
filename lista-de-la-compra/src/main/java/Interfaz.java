@@ -9,11 +9,11 @@ public class Interfaz {
         try {
             listaDeLaCompra = new ListaDeLaCompra(archivo);
             System.out.println("esto no se ejecutará cuando se genere la excepcion IOException");
-        } catch (IOException e) {
+            // las excepciones en catch multiple separado por el operador OR deben ir
+            // del mas especifico al mas general, es decir las super clases al final
+        } catch (IOException | ArrayIndexOutOfBoundsException e) {
             //throw new RuntimeException(e);
             System.out.println("Ha ocurrido un problema con el archivo " + archivo);
-        } catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Ha ocurrido un problema indice del array ");
         }
     }
 

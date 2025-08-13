@@ -22,6 +22,10 @@ public class ListaDeLaCompra {
     }
 
     public String obtenerElemento(int indice) {
-        return lista.get(indice);
+        if(indice <= lista.size()) {
+            return lista.get(indice);
+        }else {
+            return "elemento no encontrado";
+        }
     }
 }

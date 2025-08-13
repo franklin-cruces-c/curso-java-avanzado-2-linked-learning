@@ -29,27 +29,31 @@ public class ListaDeLaCompra {
         }
     }
     public void insertarElemento(String elemento) throws IOException {
-        BufferedWriter out = null;
-        try {
-            FileWriter fstream = new FileWriter(archivo, true);
+
+        FileWriter fstream = new FileWriter(archivo, true);
+        // No hay garantia de que se ejecute el finally por ejemplo
+        // no se ejecuta si se interrumpe un hilo o se cierra la maquina virtual de java
+        // para asegurar que los recursos se cierren se utiliza el try con recursos
+        try (BufferedWriter out = new BufferedWriter(fstream)){
+
             //incluso con un return el bloque finally se ejecuta
-            if(true){
-                return;
-            }
-            out = new BufferedWriter(fstream);
+//            if(true){
+//                return;
+//            }
             //out.close();
+            //BufferedWriter out = new BufferedWriter(fstream);
             out.write("\n" + elemento);
             cargarLista(archivo);
             System.out.println("Ejecutado bloque try por completo");
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println("Ejecutado bloque catch");
         }
+        /*
         finally {
             System.out.println("Ejecutado bloque finally");
             if(out != null) {
                 out.close();
             }
         }
+
+         */
     }
 }

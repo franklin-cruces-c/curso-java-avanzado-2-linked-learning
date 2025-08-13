@@ -33,7 +33,7 @@ public class ListaDeLaCompra {
         try {
             FileWriter fstream = new FileWriter(archivo, true);
             out = new BufferedWriter(fstream);
-            
+            out.close();
             out.write("\n" + elemento);
             cargarLista(archivo);
             System.out.println("Ejecutado bloque try por completo");

@@ -21,11 +21,13 @@ public class ListaDeLaCompra {
         lista = new ArrayList<>(Files.readAllLines(Paths.get(filename)));
     }
 
-    public String obtenerElemento(int indice) {
+    public String obtenerElemento(int indice) throws ArrayIndexOutOfBoundsException {
         if (indice <= lista.size()) {
             return lista.get(indice);
         } else {
-            return "elemento no encontrado";
+           // return "elemento no encontrado";
+            //Lanzamos la excepcion para que la maneje quien llama el metodo
+            throw new ArrayIndexOutOfBoundsException("Posición fuera de los limites de la lista");
         }
     }
     public void insertarElemento(String elemento) throws IOException {
@@ -45,6 +47,9 @@ public class ListaDeLaCompra {
             out.write("\n" + elemento);
             cargarLista(archivo);
             System.out.println("Ejecutado bloque try por completo");
+        }catch (IOException e){
+            e.printStackTrace();
+            throw e;
         }
         /*
         finally {

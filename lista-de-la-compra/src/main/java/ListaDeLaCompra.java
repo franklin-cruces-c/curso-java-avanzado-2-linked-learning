@@ -32,8 +32,12 @@ public class ListaDeLaCompra {
         BufferedWriter out = null;
         try {
             FileWriter fstream = new FileWriter(archivo, true);
+            //incluso con un return el bloque finally se ejecuta
+            if(true){
+                return;
+            }
             out = new BufferedWriter(fstream);
-            out.close();
+            //out.close();
             out.write("\n" + elemento);
             cargarLista(archivo);
             System.out.println("Ejecutado bloque try por completo");

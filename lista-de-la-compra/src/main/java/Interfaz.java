@@ -12,6 +12,8 @@ public class Interfaz {
         } catch (IOException e) {
             //throw new RuntimeException(e);
             System.out.println("Ha ocurrido un problema con el archivo " + archivo);
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Ha ocurrido un problema indice del array ");
         }
     }
 

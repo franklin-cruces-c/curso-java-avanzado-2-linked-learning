@@ -13,11 +13,7 @@ public class ListaDeLaCompra {
     }
 
     private void cargarLista(String filename) throws IOException {
-        try {
-            lista = new ArrayList<>(Files.readAllLines(Paths.get(filename)));
-        } catch (IOException e) {
-            System.out.println("Ahora si esto se ejecutará, porque es el mismo tipo de excepcion");
-        }
+        lista = new ArrayList<>(Files.readAllLines(Paths.get(filename)));
     }
 
     public String obtenerElemento(int indice) {

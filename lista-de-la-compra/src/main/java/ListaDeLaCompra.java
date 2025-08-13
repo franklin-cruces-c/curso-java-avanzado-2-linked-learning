@@ -22,12 +22,12 @@ public class ListaDeLaCompra {
     }
 
     public String obtenerElemento(int indice) throws PositionException {
-        if (indice <= lista.size()) {
+        try{
             return lista.get(indice);
-        } else {
+        } catch (ArrayIndexOutOfBoundsException e){
            // return "elemento no encontrado";
             //Lanzamos la excepcion para que la maneje quien llama el metodo
-            throw new PositionException("Posición fuera de los limites de la lista");
+            throw new PositionException("Posición fuera de los limites de la lista", e);
         }
     }
     public void insertarElemento(String elemento) throws IOException {

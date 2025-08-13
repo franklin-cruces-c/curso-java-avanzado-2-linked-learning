@@ -15,8 +15,8 @@ public class ListaDeLaCompra {
     private void cargarLista(String filename) throws IOException {
         try {
             lista = new ArrayList<>(Files.readAllLines(Paths.get(filename)));
-        } catch (ArrayStoreException e) {
-            System.out.println("Esto no se ejecutará");
+        } catch (IOException e) {
+            System.out.println("Ahora si esto se ejecutará, porque es el mismo tipo de excepcion");
         }
     }
 

@@ -1,3 +1,5 @@
+import javax.xml.transform.stream.StreamSource;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -12,7 +14,11 @@ public class ListaDeLaCompra {
     }
 
     private void cargarLista(String filename) {
+        try {
             lista = new ArrayList<>(Files.readAllLines(Paths.get(filename)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public String obtenerElemento(int indice) {

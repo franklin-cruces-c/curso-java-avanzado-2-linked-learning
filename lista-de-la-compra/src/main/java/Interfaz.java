@@ -23,9 +23,17 @@ public class Interfaz {
         do {
             System.out.println("Para salir introduzca 0");
             System.out.println("Para ver un elemento introduzca la posición del elemento");
+            System.out.println("Para añadir un elemento introduzca -1");
             opcionElegida = scanner.nextInt();
-            if (opcionElegida != 0) {
-                mostrarElemento(opcionElegida);
+
+            switch (opcionElegida) {
+                case 0:
+                    break;
+                case -1:
+                    insertarElemento();
+                    break;
+                default:
+                    mostrarElemento(opcionElegida);
             }
         } while (opcionElegida != 0);
 
@@ -33,5 +41,16 @@ public class Interfaz {
 
     private void mostrarElemento(int indice) {
         System.out.println("El elemento número " + indice + " de la lista es " + listaDeLaCompra.obtenerElemento(indice));
+    }
+    private void insertarElemento() {
+        Scanner scanner = new Scanner(System.in);
+        String elemento;
+        System.out.println("¿Qué elemento desea añadir?");
+        elemento = scanner.nextLine();
+        try {
+            listaDeLaCompra.insertarElemento(elemento);
+        } catch (IOException e) {
+            System.out.println("Ha ocurrido un problema con el archivo mi-lista.txt");
+        }
     }
 }

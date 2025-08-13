@@ -8,23 +8,22 @@ public class ListaDeLaCompra {
 
     private ArrayList<String> lista;
 
-    public ListaDeLaCompra(String filename) {
-
+    public ListaDeLaCompra(String filename) throws IOException {
         cargarLista(filename);
     }
 
-    private void cargarLista(String filename) {
+    private void cargarLista(String filename) throws IOException {
         try {
             lista = new ArrayList<>(Files.readAllLines(Paths.get(filename)));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (ArrayStoreException e) {
+            System.out.println("Esto no se ejecutará");
         }
     }
 
     public String obtenerElemento(int indice) {
-        if(indice <= lista.size()) {
+        if (indice <= lista.size()) {
             return lista.get(indice);
-        }else {
+        } else {
             return "elemento no encontrado";
         }
     }

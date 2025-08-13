@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Interfaz {
@@ -5,7 +6,13 @@ public class Interfaz {
     private ListaDeLaCompra listaDeLaCompra;
 
     public Interfaz(String archivo) {
-        listaDeLaCompra = new ListaDeLaCompra(archivo);
+        try {
+            listaDeLaCompra = new ListaDeLaCompra(archivo);
+            System.out.println("esto no se ejecutará cuando se genere la excepcion IOException");
+        } catch (IOException e) {
+            //throw new RuntimeException(e);
+            System.out.println("Ha ocurrido un problema con el archivo " + archivo);
+        }
     }
 
     public void mostrarMenu() {

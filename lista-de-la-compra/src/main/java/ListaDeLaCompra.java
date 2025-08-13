@@ -22,21 +22,24 @@ public class ListaDeLaCompra {
     }
 
     public String obtenerElemento(int indice) throws PositionException {
-        try{
+        try {
             return lista.get(indice);
-        } catch (ArrayIndexOutOfBoundsException e){
-           // return "elemento no encontrado";
+        } catch (ArrayIndexOutOfBoundsException e) {
+            // return "elemento no encontrado";
             //Lanzamos la excepcion para que la maneje quien llama el metodo
-            throw new PositionException("Posición fuera de los limites de la lista", e);
+            PositionException positionException = new PositionException("Posición fuera de los limites de la lista");
+            positionException.initCause(e);
+            throw positionException;
         }
     }
+
     public void insertarElemento(String elemento) throws IOException {
 
         FileWriter fstream = new FileWriter(archivo, true);
         // No hay garantia de que se ejecute el finally por ejemplo
         // no se ejecuta si se interrumpe un hilo o se cierra la maquina virtual de java
         // para asegurar que los recursos se cierren se utiliza el try con recursos
-        try (BufferedWriter out = new BufferedWriter(fstream)){
+        try (BufferedWriter out = new BufferedWriter(fstream)) {
 
             //incluso con un return el bloque finally se ejecuta
 //            if(true){
@@ -47,7 +50,7 @@ public class ListaDeLaCompra {
             out.write("\n" + elemento);
             cargarLista(archivo);
             System.out.println("Ejecutado bloque try por completo");
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             throw e;
         }

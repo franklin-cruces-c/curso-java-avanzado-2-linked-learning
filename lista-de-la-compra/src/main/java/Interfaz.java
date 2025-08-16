@@ -40,7 +40,11 @@ public class Interfaz {
     }
 
     private void mostrarElemento(int indice) {
-        System.out.println("El elemento número " + indice + " de la lista es " + listaDeLaCompra.obtenerElemento(indice));
+        try {
+            System.out.println("El elemento número " + indice + " de la lista es " + listaDeLaCompra.obtenerElemento(indice));
+        } catch (PositionException e) {
+            throw new RuntimeException(e);
+        }
     }
     private void insertarElemento() {
         Scanner scanner = new Scanner(System.in);

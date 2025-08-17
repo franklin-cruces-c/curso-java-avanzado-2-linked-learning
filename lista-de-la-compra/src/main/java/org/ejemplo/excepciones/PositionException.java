@@ -1,3 +1,5 @@
+package org.ejemplo.excepciones;
+
 public class PositionException extends Exception {
 
     public PositionException() {

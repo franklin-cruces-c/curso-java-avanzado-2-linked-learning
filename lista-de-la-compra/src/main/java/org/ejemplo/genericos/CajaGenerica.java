@@ -1,4 +1,4 @@
-package org.ejemplo.generics;
+package org.ejemplo.genericos;
 
 public class CajaGenerica<T> {
     private T objeto;

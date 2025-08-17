@@ -1,4 +1,5 @@
-import javax.xml.transform.stream.StreamSource;
+package org.ejemplo.excepciones;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;

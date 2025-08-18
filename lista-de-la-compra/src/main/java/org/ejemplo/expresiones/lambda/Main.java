@@ -24,5 +24,7 @@ public class Main {
            return mcm;
        };
        System.out.println("El mínimo común múltiplo de 12 y 9 es: "+minimoComunMultiplo.aplicar(12,9));
+       Ejemplo ejemplo = new Ejemplo();
+       ejemplo.miMetodo();
     }
 }

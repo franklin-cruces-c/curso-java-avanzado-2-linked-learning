@@ -38,7 +38,7 @@ public class ListaDeLaCompra {
 
         FileWriter fstream = new FileWriter(archivo, true);
         // No hay garantia de que se ejecute el finally por ejemplo
-        // no se ejecuta si se interrumpe un hilo o se cierra la maquina virtual de java
+        // no se ejecuta si se interrumpe un hilos o se cierra la maquina virtual de java
         // para asegurar que los recursos se cierren se utiliza el try con recursos
         try (BufferedWriter out = new BufferedWriter(fstream)) {
 

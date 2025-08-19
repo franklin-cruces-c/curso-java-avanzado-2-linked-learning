@@ -1,6 +1,11 @@
 package org.ejemplo.streams;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class CarteraDeClientes {
@@ -85,6 +90,58 @@ public class CarteraDeClientes {
                 .sorted()
                 .map(String::toLowerCase)
                 .forEach(System.out::println);
+
+        /*
+         * Operaciones terminales
+         * Cuando trabajamos con streams los  pipelines terminan con una operacion terminal
+         * que da como resultado algo diferente a un stream.
+         */
+
+        Stream.of(8,15,-3, 24, -99)
+                .sorted()
+                .forEach(System.out::println);
+
+        Object [] myArray = Stream.of(8, 15, -3, 24, -99)
+                .sorted()
+                .toArray();
+
+        Set<Object> mySet = Stream.of(8, 15, -3, 24, -99)
+                .sorted()
+                .collect(Collectors.toSet());
+        /*
+         * El operador reduce
+         * reduce una secuencia de elementos a un único resultado aplicando repetidamente una
+         * operacion binaria, aplicable a series como el factorial. Se va apilando el resultado..
+         */
+
+        Optional<Integer> producto = Stream.of(8, 15, -3, 24, -99)
+                .sorted()
+                .reduce((a,b) -> a * b);
+        System.out.println("El producto final es :" + producto.get());
+
+
+        /**
+         * Operaciones predefinidas
+         */
+         int suma =  IntStream.of(8, 15, -3, 24, -99)
+                .sorted()
+                .sum();
+        System.out.println("La suma final es :" + suma);
+
+        /*
+         *  Operaciones Booleanas
+         */
+        boolean mayorQue10 =  IntStream.of(8, 15, -3, 24, -99)
+                .sorted()
+                .anyMatch(i -> i >10);
+
+        System.out.println("Hay algun elemento mayor que 10? "+mayorQue10);
+
+        boolean TodosmayoresQue10 =  IntStream.of(8, 15, -3, 24, -99)
+                .sorted()
+                .allMatch(i -> i >10);
+
+        System.out.println("Son todos los elementos mayores que 10? "+TodosmayoresQue10);
     }
 
     static ArrayList<Cliente> crearListaDeClientes() {

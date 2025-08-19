@@ -1,6 +1,7 @@
 package org.ejemplo.streams;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class CarteraDeClientes {
 
@@ -34,6 +35,56 @@ public class CarteraDeClientes {
                 .filter(cliente -> cliente.getPais().equalsIgnoreCase("ARGENTINA"))
                 .forEach(System.out::println);
 
+        /*
+         * Operaciones intermedias, operaciones que se ejecutan sobre un stream
+         * que producen otro stream, y estas no se ejecutan hasta que
+         * no se invoca una operacion terminal (por ejemplo forEach).
+         */
+        System.out.println("Otro ejemplo, operaciones intermedias y operacion terminal");
+        clientes.stream()
+                .filter(cliente -> cliente.getPais().equalsIgnoreCase("MÉXICO"))
+                .forEach(System.out::println);
+
+        /*
+         * Otro ejemplo con peek
+         * peek no cierra el stream permitiendo encadenar mas operaciones
+         * forEach cierra el stream ya que es una operacion terminal.
+         */
+        System.out.println("Otro ejemplo, con peek y count");
+        clientes.stream()
+                .filter(cliente -> cliente.getNombre().startsWith("M"))
+                .peek(cliente -> System.out.println("Cliente cuyo nombre comienza por M "+cliente))
+                .filter(cliente -> cliente.getPais().equalsIgnoreCase("MÉXICO"))
+                .peek(cliente -> System.out.println("Cliente cuyo nombre comienza por M y es de México "+cliente))
+                .count();
+
+
+        /*
+         * Operacion Map transforma los elementos de un stream, utilizando la funcion que se le envia
+         */
+        System.out.println("******* Operacion Map *******");
+        Stream.of("MARIA", "PEDRO", "JUAN")
+                .map(String::toLowerCase)
+                .forEach(System.out::println);
+
+        /*
+         * distinct devuelve un stream con los elementos no duplicados utilizando el metodo equals
+         */
+        System.out.println("******* Operación distinct *******");
+        Stream.of("MARIA", "PEDRO", "JUAN", "PEDRO")
+                .distinct()
+                .map(String::toLowerCase)
+                .forEach(System.out::println);
+
+        /*
+         * sorted devuelve un stream con los elementos ordenados, los elementos deben de ser comparables
+         */
+        System.out.println("******* Operación sorted *******");
+        Stream.of("MARIA", "PEDRO", "JUAN", "PEDRO")
+                .distinct()
+                .sorted()
+                .map(String::toLowerCase)
+                .forEach(System.out::println);
     }
 
     static ArrayList<Cliente> crearListaDeClientes() {

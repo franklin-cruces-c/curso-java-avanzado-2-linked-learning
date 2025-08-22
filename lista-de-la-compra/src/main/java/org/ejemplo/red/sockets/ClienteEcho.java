@@ -17,11 +17,26 @@ public class ClienteEcho {
     }
 
     public void comenzarConexion() {
+        try {
+            clienteSocket = new Socket(nombreDeHost, numeroDePuerto);
+            out = new PrintWriter(clienteSocket.getOutputStream(),true);
+            in = new BufferedReader(new InputStreamReader(clienteSocket.getInputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
 
+        }
     }
 
     public String enviarMensaje(String mensaje) {
-
+        out.println(mensaje);
+        String respuesta = null;
+        try {
+            respuesta = in.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return respuesta;
     }
 
     public void pararConexion() {

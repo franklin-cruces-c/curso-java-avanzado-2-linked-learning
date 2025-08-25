@@ -1,21 +1,17 @@
-package org.ejemplo.modular.interfaz;
+package org.ejemplo.interfaz;
 
 
-import org.ejemplo.modular.estructuras.Frase;
-import org.ejemplo.modular.frases.GestorFraseDelDia;
-
-import java.sql.Connection;
+import com.mparrastia.frases.GestorFraseDelDia;
+import org.ejemplo.estructuras.Frase;
 
 
-/*
- * Proyecto creado de forma clásica
- * Desde Java 9 se puede tambien trabajar con modulos
- */
+
 public class Main {
     public static void main(String[] args) {
         GestorFraseDelDia gestorFraseDelDia = new GestorFraseDelDia();
         Frase fraseDelDia = gestorFraseDelDia.obtenerfraseDelDia();
         System.out.println("Frase del dia: " + fraseDelDia.getFrase() + " por " + fraseDelDia.getAutor());
+
 
     }
 }
